@@ -22,8 +22,29 @@ public class Calculator {
 			}
 		}
 
+		ArrayList<String> negativeInts = new ArrayList<String>();
+		for (String s : splits) {
+			if (Integer.parseInt(s) < 0) {
+				negativeInts.add(s);
+			}
+		}
+
+		if (negativeInts.size() > 0) {
+			String msg = "Negatives is not allowed:";
+			for (String n : negativeInts) {
+				msg = msg + " " + n;
+			}
+
+			throw new RuntimeException(msg); 
+		}
+
 		for (String g: splits) {
 				returnValue = returnValue + Integer.parseInt(g);
+		}
+
+		if(splits.size() > 1000)
+		{
+			return null; 
 		}
 
 		return returnValue;
