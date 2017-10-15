@@ -1,5 +1,7 @@
 package is.ru.stringcalculator; 
 
+import java.util.ArrayList;
+
 public class Calculator {
 
 	public static int add(String text){
@@ -9,17 +11,20 @@ public class Calculator {
 			return 0;
 		}
 
-		String numbers[] = text.split(",");
+		ArrayList<String> splits = new ArrayList<String>();
+		String commaSplits[] = text.split(",");
 
-		if (numbers.length > 1) {
-			for (String g: numbers) {
-				returnValue = returnValue + Integer.parseInt(g);
+		for (String g : commaSplits) {
+			String newLineSplits[] = g.split("\\r\\n|\\n|\\r");
+
+			for (String n : newLineSplits) {
+				splits.add(n);
 			}
 		}
-		else {
-			returnValue = Integer.parseInt(numbers[0]);
-		}		
 
+		for (String g: splits) {
+				returnValue = returnValue + Integer.parseInt(g);
+		}
 
 		return returnValue;
 	}
