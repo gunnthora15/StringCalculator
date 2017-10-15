@@ -3,9 +3,24 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text){
-		return 0; 
-	}
-	public static int add(int number1, int number2){
-		return number1 + number2;
+		Integer returnValue = 0;
+
+		if (text == "") {
+			return 0;
+		}
+
+		String numbers[] = text.split(",");
+
+		if (numbers.length > 1) {
+			for (String g: numbers) {
+				returnValue = returnValue + Integer.parseInt(g);
+			}
+		}
+		else {
+			returnValue = Integer.parseInt(numbers[0]);
+		}		
+
+
+		return returnValue;
 	}
 }
